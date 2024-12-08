@@ -1,6 +1,4 @@
-FROM debian:jessie
-
-LABEL maintainer "opsxcq@strm.sh"
+FROM debian:bullseye
 
 RUN apt-get update && \
     apt-get upgrade -y &&\

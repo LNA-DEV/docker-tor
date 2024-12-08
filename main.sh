@@ -14,7 +14,7 @@ EOF
 if [[ ! -z "${PRIVATE_KEY}" && ! -z "${LISTEN_PORT}" && ! -z "${REDIRECT}" ]]
 then
     echo "[+] Starting the listener at port ${LISTEN_PORT}, redirecting to ${REDIRECT}"
-    echo "${PRIVATE_KEY}" > /web/private_key
+    # echo "${PRIVATE_KEY}" > /web/private_key
     cat >> /etc/tor/torrc << EOF
 HiddenServicePort ${LISTEN_PORT} ${REDIRECT}
 EOF
@@ -26,5 +26,6 @@ then
     echo "SOCKSPort 0.0.0.0:${PROXY_PORT}" >> /etc/tor/torrc
 fi
 
+chmod 700 /web
 
 tor -f /etc/tor/torrc
